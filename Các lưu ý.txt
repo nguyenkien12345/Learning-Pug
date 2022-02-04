@@ -1,0 +1,53 @@
+- Nếu lần đầu tiên cài pub => Sau đó chạy pug => Gặp lỗi: ps1-cannot-be-loaded-because-running-scripts-is-disabled-on-this-system
+=> Vào terminal trong Vs code gõ lệnh sau: Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
+
+- Câu lệnh chạy Pug: pug index.pug --watch --pretty
+
+- Gõ ! => Sau đó tab => Nó sẽ Generate ra file Pug
+
+- Trong pug không có cặp ngoặc <>
+
+- Khi code trong pug thay đổi thì file index.html sẽ tự động cập nhật theo file index.pug
+
+- Khi gõ bên pug nếu ta không khai báo thẻ tag gì thì nó sẽ mặc định là thẻ div. Ta chỉ việc gõ tên class => Bên file pug sẽ tự động generate ra
+Vd: Bên pug ta code như vậy: .item.item--primary.item--secondary thì bên file index.html sẽ tự động generate ra như sau: 
+<div class="item item--primary item--secondary"></div> (Mặc đinh là thẻ div)
+
+- Các thuộc tính, attribute phải đặt trong cặp ngoặc tròn (). Nếu có nhiều attribute, thuộc tính thì ngăn cách nhau bằng khoảng cách hoặc dấu ,
+Vd: Bên pug ta code như vậy: input.input(type="text" placeholder="Enter Your Name:" name="txtName") thì bên file index.html sẽ tự động generate ra như sau:
+<input class="input" type="text" placeholder="Enter Your Name:" name="txtName">
+
+- Khi import các thẻ link,script thì bỏ hết cặp <> và dùng cặp ngoặc tròn () để bọc các thuộc tính, attribute
+Vd: link(rel="preconnect" href="https://fonts.googleapis.com")
+
+- Cách để chèn thẻ con vào thẻ mẹ: Thẻ con sẽ được tab vào bên trong 1 tab nằm bên trong thẻ mẹ. 
+Vd:         a.lienket(href="https://www.facebook.com/")  => <a class="lienket" href="https://www.facebook.com/"><span> Truy cập Facebook</span></a>
+                span  Truy cập Facebook
+
+- Nếu phức tạp quá thì vô google gõ : html to pug
+
+- sass ./scss/app.scss ./css/app.css --watch => Build file app.scss ra file app.css
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Test code
+
+<div class="item item--primary item--secondary"></div>
+<div id="id"> </div>
+<h2 class="heading"> </h2>
+<h3 class="title"> </h3>
+<p class="desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita quibusdam iure harum nam, quod labore,
+    <maxime>cupiditate accusantium vero ratione et. Ratione soluta error assumenda perferendis accusantium, dignissimos quae quos?</maxime>
+</p>
+<input class="input" type="text" placeholder="Enter Your Name:" name="txtName"><a class="lienket" href="https://www.facebook.com/"><span> Truy cập Facebook</span></a>
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+- Trong Pug có 1 khái niệm là mixins => Mục đích là để tái sử dụng lại các đoạn code giống nhau => Các file mixins luôn luôn
+khai báo đầu dòng trong file index.pug
+
+- include: Khi ta có 1 file, 1 component nào đó riêng mà muốn chèn vào file khác thì dùng include
+Vd: include ./developer => Import (Gọi) file developer.pug (Lưu ý không có cặp "" khi gọi file)
+
+- Cấu trúc mixins nó giống như là function trong javascript. Khi ta muốn gắn biến vào thì để dấu = sau đó cách ra đưa biến vào
+Vd: span.developer-job= job (ở đây chữ job chính là biến (tham số của hàm))
+Chúng ta không cần code lại nhiều lần các đoạn code giống nhau hay code xong copy paste mà chúng ta chỉ cần code 1 lần trong file mixins, sau này chúng ta 
+muốn sửa hay thay đổi class chỉ cần vào mixins thay đổi là các đoạn code mà được sử dụng ở nhiều file khác nhau sẽ tự động được cập nhật lại

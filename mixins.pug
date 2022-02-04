@@ -1,0 +1,13 @@
+mixin developerItem(image, alt, name, job, desc)
+    .developer-item
+        .developer-image 
+            img(src= image, alt= alt)
+        h3.developer-name= name
+        .developer-meta 
+            span.developer-job= job
+            span.developer-rating
+        //- Nếu người dùng có truyền biến desc thì hiển thị ra dữ liệu người dùng truyền vào không thì hiển thị mặc định dữ liệu mình đưa vào
+        if desc 
+            p.developer-description= desc 
+        else 
+            p.developer-other This is example of descriptions

@@ -1,0 +1,13 @@
+//- Đây là layout dùng chung (Chứa header và footer cố định dùng cho tất cả các trang chỉ khác duy nhất phần nội dung (content) ở giữa)
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Document
+    body
+        include ./header
+        //- main sẽ là nơi mà nội dung bị thay đổi. Các trang khác sẽ truyền nội dung của từng trang vào trong block main và layout.pug nhận về hiển thị ra
+        block main
+        include ./footer
